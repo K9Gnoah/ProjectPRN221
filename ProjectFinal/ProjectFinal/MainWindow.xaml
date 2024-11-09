@@ -5,8 +5,140 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectFinal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New Folder"/>
+                <MenuItem Header="Import Asset"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Rename"/>
+                <MenuItem Header="Delete"/>
+                <MenuItem Header="Move To"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Folder Tree -->
+            <Grid Grid.Column="0" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Folders" FontWeight="Bold" Margin="5"/>
+                <TreeView Grid.Row="1" Margin="0,5,0,0">
+                    <TreeViewItem Header="Project Assets">
+                        <TreeViewItem Header="Models"/>
+                        <TreeViewItem Header="Textures"/>
+                        <TreeViewItem Header="Scripts"/>
+                        <TreeViewItem Header="Prefabs"/>
+                    </TreeViewItem>
+                </TreeView>
+            </Grid>
+
+            <!-- Asset List -->
+            <Grid Grid.Column="1" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Assets" FontWeight="Bold" Margin="5"/>
+
+                <!-- Search and Filter -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5">
+                    <TextBox Width="200" Margin="5" VerticalContentAlignment="Center" 
+                             Text="Search assets..." />
+                    <ComboBox Width="120" Margin="5" VerticalContentAlignment="Center">
+                        <ComboBoxItem Content="All Types"/>
+                        <ComboBoxItem Content="Models"/>
+                        <ComboBoxItem Content="Textures"/>
+                        <ComboBoxItem Content="Scripts"/>
+                        <ComboBoxItem Content="Prefabs"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Asset ListView -->
+                <ListView Grid.Row="2" Margin="5">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="200"/>
+                            <GridViewColumn Header="Type" Width="100"/>
+                            <GridViewColumn Header="Modified Date" Width="150"/>
+                            <GridViewColumn Header="Project" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <!-- Asset Details -->
+            <Grid Grid.Column="2" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Asset Details" FontWeight="Bold" Margin="5"/>
+
+                <StackPanel Grid.Row="1" Margin="5">
+                    <GroupBox Header="Information" Margin="0,5">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Asset Name:" Margin="0,5"/>
+                            <TextBox Margin="0,0,0,5"/>
+
+                            <TextBlock Text="Type:" Margin="0,5"/>
+                            <ComboBox Margin="0,0,0,5">
+                                <ComboBoxItem Content="Model"/>
+                                <ComboBoxItem Content="Texture"/>
+                                <ComboBoxItem Content="Script"/>
+                                <ComboBoxItem Content="Prefab"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Project:" Margin="0,5"/>
+                            <TextBox Margin="0,0,0,5"/>
+
+                            <TextBlock Text="Notes:" Margin="0,5"/>
+                            <TextBox Height="100" TextWrapping="Wrap" 
+                                     AcceptsReturn="True" Margin="0,0,0,5"/>
+
+                            <TextBlock Text="Last Modified:" Margin="0,5"/>
+                            <TextBox IsReadOnly="True" Margin="0,0,0,5"/>
+
+                            <Button Content="Save Changes" 
+                                    HorizontalAlignment="Right" 
+                                    Padding="20,5" Margin="0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Ready"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="Total Assets: 0"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>

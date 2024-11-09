@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\GITHUB\ProjectPRN221\ProjectFinal\ProjectFinal\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\GITHUB\ProjectPRN221\ProjectFinal\ProjectFinal\.editorconfig" />
+  </ItemGroup>
+
 </Project>
